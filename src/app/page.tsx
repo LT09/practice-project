@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Header from "./components/Header";
+import Header from "../components/Header";
 
 interface Data {
   userId: number;
@@ -10,7 +10,7 @@ interface Data {
   body: string;
 }
 
-export default function Home() {
+const Home = () => {
   const [data, setData] = useState<Data[]>();
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -49,4 +49,6 @@ export default function Home() {
       </ul>
     </main>
   );
-}
+};
+
+export default Home;

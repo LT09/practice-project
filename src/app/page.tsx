@@ -1,25 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Header from "../components/Header";
-
-interface Data {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import { jsonplaceholderPosts } from "@/shared/api/jsonplaceholderAPI";
+import { jsonplaceholderPostsTypes } from "@/types/jsonplaceholderTypes";
 
 const Home = () => {
-  const [data, setData] = useState<Data[]>();
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
+  const [data, setData] = useState<jsonplaceholderPostsTypes[]>();
 
   const fetchData = async () => {
     try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      const data = await res.json();
-      setData(data);
+      const res = await jsonplaceholderPosts();
+      setData(res);
     } catch (err) {
       console.log(err);
     }

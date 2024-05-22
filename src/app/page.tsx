@@ -7,7 +7,7 @@ import { jsonplaceholderPostsTypes } from "@/types/jsonplaceholderTypes";
 const Home = () => {
   const [data, setData] = useState<jsonplaceholderPostsTypes[]>();
 
-  const fetchData = async () => {
+  const onGetPostsData = async () => {
     try {
       const res = await jsonplaceholderPosts();
       setData(res);
@@ -23,7 +23,7 @@ const Home = () => {
   const result = extraFunction(2, 3);
 
   useEffect(() => {
-    fetchData();
+    onGetPostsData();
   }, []);
 
   return (

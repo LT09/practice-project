@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { jsonplaceholderPosts } from "@/shared/api/jsonplaceholderAPI";
 import { jsonplaceholderPostsTypes } from "@/types/jsonplaceholderTypes";
+import { useAppState } from "@/shared/reducers/GlobalState";
 
 const Home = () => {
+  const { state } = useAppState();
   const [data, setData] = useState<jsonplaceholderPostsTypes[]>();
 
   const onGetPostsData = async () => {
@@ -28,12 +30,35 @@ const Home = () => {
 
   return (
     <main>
-      <Header title="Practice Next.js 01" />
+      <Header title="Practice Next.js 01" usersData={state} />
       <p>My result: {result}</p>
+      {state ? (
+        <ul>
+          {state.map((user) => (
+            <li key={user.id}>
+              <div>
+                <p>{user.phone}</p>
+              </div>
+              <div>
+                <h3>Address:</h3>
+                <p>{user.address.city}</p>
+              </div>
+              <div>
+                <h3>Company:</h3>
+                <p>{user.company.name}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Loading...</p>
+      )}
       <ul>
-        {data?.map((item) => (
+        {data?.map((item, index) => (
           <li key={item.id}>
-            <h3>{item.title}</h3>
+            <h3>
+              {index}. {item.title}
+            </h3>
             <p>{item.body}</p>
           </li>
         ))}

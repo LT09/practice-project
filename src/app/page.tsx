@@ -1,12 +1,17 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { jsonplaceholderPosts } from "@/shared/api/jsonplaceholderAPI";
 import { jsonplaceholderPostsTypes } from "@/types/jsonplaceholderTypes";
-import { useAppState } from "@/shared/reducers/GlobalState";
+import useStore from "@/shared/reducers/ZustandGlobal";
 
 const Home = () => {
-  const { state } = useAppState();
+  const { usersData, onGetUsersData } = useStore((state) => ({
+    usersData: state.usersData,
+    onGetUsersData: state.onGetUsersData,
+  }));
+
   const [data, setData] = useState<jsonplaceholderPostsTypes[]>();
 
   const onGetPostsData = async () => {
@@ -18,23 +23,20 @@ const Home = () => {
     }
   };
 
-  const extraFunction = (num1: number, num2: number) => {
-    return num1 * num2;
-  };
-
-  const result = extraFunction(2, 3);
-
   useEffect(() => {
     onGetPostsData();
   }, []);
 
+  useEffect(() => {
+    onGetUsersData();
+  }, [onGetUsersData]);
+
   return (
     <main>
-      <Header title="Practice Next.js 01" usersData={state} />
-      <p>My result: {result}</p>
-      {state ? (
+      <Header title="Practice Next.js 01" usersData={usersData} />
+      {usersData ? (
         <ul>
-          {state.map((user) => (
+          {usersData.map((user) => (
             <li key={user.id}>
               <div>
                 <p>{user.phone}</p>

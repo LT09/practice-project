@@ -9,6 +9,17 @@ export const jsonplaceholderPosts = async () => {
   }
 };
 
+export const jsonplaceholderPhotos = async () => {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/photos");
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
 export const jsonplaceholderUsers = async () => {
   try {
     const res = await fetch("https://jsonplaceholder.typicode.com/users");

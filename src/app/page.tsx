@@ -2,8 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import { jsonplaceholderPosts } from "@/shared/api/jsonplaceholderAPI";
-import { jsonplaceholderPostsTypes } from "@/types/jsonplaceholderTypes";
+import {
+  jsonplaceholderPhotos,
+  jsonplaceholderPosts,
+} from "@/shared/api/jsonplaceholderAPI";
+import {
+  jsonplaceholderPhotosTypes,
+  jsonplaceholderPostsTypes,
+} from "@/types/jsonplaceholderTypes";
 import useStore from "@/shared/reducers/ZustandGlobal";
 
 const Home = () => {
@@ -12,12 +18,24 @@ const Home = () => {
     onGetUsersData: state.onGetUsersData,
   }));
 
-  const [data, setData] = useState<jsonplaceholderPostsTypes[]>();
+  const [post, setPost] = useState<jsonplaceholderPostsTypes[]>();
+  const [photo, setPhoto] = useState<jsonplaceholderPhotosTypes[]>();
 
   const onGetPostsData = async () => {
     try {
       const res = await jsonplaceholderPosts();
-      setData(res);
+      setPost(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onGetPhotossData = async () => {
+    try {
+      const res = await jsonplaceholderPhotos();
+      console.log("onGetPhotossData", res);
+
+      setPhoto(res);
     } catch (err) {
       console.log(err);
     }
@@ -25,6 +43,7 @@ const Home = () => {
 
   useEffect(() => {
     onGetPostsData();
+    onGetPhotossData();
   }, []);
 
   useEffect(() => {
@@ -56,7 +75,7 @@ const Home = () => {
         <p>Loading...</p>
       )}
       <ul>
-        {data?.map((item, index) => (
+        {post?.map((item, index) => (
           <li key={item.id}>
             <h3>
               {index}. {item.title}

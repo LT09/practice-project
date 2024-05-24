@@ -5,6 +5,14 @@ export interface jsonplaceholderPostsTypes {
   body: string;
 }
 
+export interface jsonplaceholderPhotosTypes {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
+
 export interface jsonplaceholderUsersTypes {
   id: number;
   name: string;

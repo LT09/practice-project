@@ -11,8 +11,7 @@ import {
   jsonplaceholderPostsTypes,
 } from "@/types/jsonplaceholderTypes";
 import useStore from "@/shared/reducers/ZustandGlobal";
-import Card from "@/components/Card";
-
+import Cards from "@/components/Card";
 const Home = () => {
   const { usersData, onGetUsersData } = useStore((state) => ({
     usersData: state.usersData,
@@ -34,8 +33,6 @@ const Home = () => {
   const onGetPhotossData = async () => {
     try {
       const res = await jsonplaceholderPhotos();
-      console.log("onGetPhotossData", res);
-
       setPhoto(res);
     } catch (err) {
       console.log(err);
@@ -54,9 +51,10 @@ const Home = () => {
   return (
     <main>
       <Header title="Practice Next.js 01" usersData={usersData} />
-      <Card
-        imageSrc={photo?.[0]?.url as string}
-        title={photo?.[0]?.title as string}
+      <Cards
+        id={photo?.[0]?.id || 0}
+        imageSrc={photo?.[0]?.url || ""}
+        title={photo?.[0]?.title || ""}
       />
       {usersData ? (
         <ul>

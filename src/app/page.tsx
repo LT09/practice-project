@@ -11,7 +11,7 @@ import {
   jsonplaceholderPostsTypes,
 } from "@/types/jsonplaceholderTypes";
 import useStore from "@/shared/reducers/ZustandGlobal";
-import Cards from "@/components/Card";
+import CustomCard from "@/components/Card";
 const Home = () => {
   const { usersData, onGetUsersData } = useStore((state) => ({
     usersData: state.usersData,
@@ -51,12 +51,20 @@ const Home = () => {
   return (
     <main>
       <Header title="Practice Next.js 01" usersData={usersData} />
-      <Cards
-        id={photo?.[0]?.id || 0}
-        imageSrc={photo?.[0]?.url || ""}
-        title={photo?.[0]?.title || ""}
-      />
-      {usersData ? (
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {photo?.slice(0, 10).map((item) => (
+            <CustomCard
+              key={item.id || 0}
+              id={item.id || 0}
+              imageSrc={item.url || ""}
+              title={item.title || ""}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* {usersData ? (
         <ul>
           {usersData.map((user) => (
             <li key={user.id}>
@@ -76,17 +84,7 @@ const Home = () => {
         </ul>
       ) : (
         <p>Loading...</p>
-      )}
-      <ul>
-        {post?.map((item, index) => (
-          <li key={item.id}>
-            <h3>
-              {index}. {item.title}
-            </h3>
-            <p>{item.body}</p>
-          </li>
-        ))}
-      </ul>
+      )} */}
     </main>
   );
 };

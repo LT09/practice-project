@@ -1,12 +1,15 @@
 // components/Card.tsx
 import React from "react";
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Image,
 } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 interface CardProps {
   id: number;
@@ -14,11 +17,18 @@ interface CardProps {
   title: string;
 }
 
-const Cards: React.FC<CardProps> = ({ id, imageSrc, title }) => {
+const CustomCard: React.FC<CardProps> = ({ id, imageSrc, title }) => {
   return (
-    <Card className="py-4 w-80 h-84">
-      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+    <Card className="py-4 w-full h-full">
+      <CardHeader className="pb-0 pt-2 px-4 flex-row justify-between items-center">
         <h2 className="font-bold text-large">Card {id}</h2>
+        <FontAwesomeIcon
+          icon={faPen}
+          size="lg"
+          color="gray"
+          className="hover:text-blue-500 transition-colors duration-300 ease-in-out"
+          onClick={() => console.log(id)}
+        />
       </CardHeader>
       <CardBody className="overflow-visible p-4 flex justify-center">
         <Image
@@ -35,4 +45,4 @@ const Cards: React.FC<CardProps> = ({ id, imageSrc, title }) => {
   );
 };
 
-export default Cards;
+export default CustomCard;

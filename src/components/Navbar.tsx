@@ -2,6 +2,9 @@ import React from "react";
 import {
   Navbar,
   NavbarBrand,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
   NavbarContent,
   NavbarItem,
   Link,
@@ -11,43 +14,53 @@ import {
   DropdownMenu,
   Avatar,
 } from "@nextui-org/react";
-
 const CustomNavbar: React.FC<any> = () => {
+  const menuItems = ["Profile", "Activity", "Settings", "Log Out"];
+
   return (
-    <Navbar>
-      <NavbarBrand>
-        <p className="font-bold text-inherit">ACME</p>
-      </NavbarBrand>
+    <Navbar disableAnimation isBordered className="bg-black">
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle />
+      </NavbarContent>
+
+      <NavbarContent className="sm:hidden pr-3" justify="center">
+        <NavbarBrand>
+          <p className="font-bold text-2xl text-inherit">Mr.LT</p>
+        </NavbarBrand>
+      </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarBrand>
+          <p className="font-bold text-2xl text-inherit">Mr.LT</p>
+        </NavbarBrand>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
+          <Link color="primary" href="#">
+            Profile
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page" color="secondary">
-            Customers
+          <Link href="#" aria-current="page" color="primary">
+            Activity
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link color="primary" href="#">
+            Settings
           </Link>
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent as="div" justify="end">
+      <NavbarContent justify="end">
         <Dropdown placement="bottom-end" className="bg-black">
           <DropdownTrigger>
             <Avatar
               isBordered
               as="button"
               className="transition-transform"
-              color="secondary"
-              name="Jason Hughes"
-              size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              color="primary"
+              name="LT"
+              size="md"
+              src=""
             />
           </DropdownTrigger>
           <DropdownMenu
@@ -57,7 +70,7 @@ const CustomNavbar: React.FC<any> = () => {
           >
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold">LT09</p>
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>
@@ -71,6 +84,27 @@ const CustomNavbar: React.FC<any> = () => {
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
+
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              className="w-full"
+              color={
+                index === 1
+                  ? "primary"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
+              }
+              href="#"
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </Navbar>
   );
 };

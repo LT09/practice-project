@@ -13,7 +13,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ title, usersData }) => {
   return (
-    <div className="bg-red-500 lg:p-8 p-4">
+    <div className="bg-blue-700 lg:p-8 p-4">
       <h1 className="text-5xl font-bold pb-6">{title}</h1>
       {usersData ? (
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-6 p-4">
@@ -30,7 +30,7 @@ const Header: FC<HeaderProps> = ({ title, usersData }) => {
             </p>
             <Button
               className="my-3 w-full"
-              color="primary"
+              color="default"
               radius="sm"
               startContent={<FontAwesomeIcon icon={faPen} />}
             >

@@ -1,19 +1,19 @@
-export interface jsonplaceholderPostsTypes {
+export type jsonplaceholderPostsTypes = {
   userId: number;
   id: number;
   title: string;
   body: string;
-}
+};
 
-export interface jsonplaceholderPhotosTypes {
+export type jsonplaceholderPhotosTypes = {
   albumId: number;
   id: number;
   title: string;
   url: string;
   thumbnailUrl: string;
-}
+};
 
-export interface jsonplaceholderUsersTypes {
+export type jsonplaceholderUsersTypes = {
   id: number;
   name: string;
   username: string;
@@ -22,23 +22,23 @@ export interface jsonplaceholderUsersTypes {
   phone: string;
   website: string;
   company: Company;
-}
+};
 
-export interface Address {
+export type Address = {
   street: string;
   suite: string;
   city: string;
   zipcode: string;
   geo: Geo;
-}
+};
 
-export interface Geo {
+export type Geo = {
   lat: string;
   lng: string;
-}
+};
 
-export interface Company {
+export type Company = {
   name: string;
   catchPhrase: string;
   bs: string;
-}
+};

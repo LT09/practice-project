@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Navbar,
@@ -18,7 +20,12 @@ const CustomNavbar: React.FC<any> = () => {
   const menuItems = ["Profile", "Activity", "Settings", "Log Out"];
 
   return (
-    <Navbar disableAnimation isBordered className="bg-black">
+    <Navbar
+      disableAnimation
+      isBordered
+      maxWidth={"full"}
+      className="bg-black container mx-auto"
+    >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>

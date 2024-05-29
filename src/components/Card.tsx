@@ -1,7 +1,8 @@
 // components/Card.tsx
+"use client";
+
 import React from "react";
 import {
-  Button,
   Card,
   CardBody,
   CardFooter,

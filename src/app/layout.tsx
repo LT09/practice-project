@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`min-w-[320px] flex flex-col overscroll-none`}>
         <AppProvider>
           <NextUIProvider>{children}</NextUIProvider>
         </AppProvider>

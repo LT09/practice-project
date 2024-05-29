@@ -5,6 +5,14 @@ export type jsonplaceholderPostsTypes = {
   body: string;
 };
 
+export type jsonplaceholderCommentsTypes = {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+};
+
 export type jsonplaceholderPhotosTypes = {
   albumId: number;
   id: number;

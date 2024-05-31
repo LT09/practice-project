@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 
 interface CardProps {
   id: number;
@@ -19,6 +20,12 @@ interface CardProps {
 }
 
 const CustomCard: React.FC<CardProps> = ({ id, imageSrc, title }) => {
+  const router = useRouter();
+
+  const handleNavigate = () => {
+    router.push(`/card/${id}`);
+  };
+
   return (
     <Card className="py-4 w-full h-full">
       <CardHeader className="pb-0 pt-2 px-4 flex-row justify-between items-center">
@@ -28,7 +35,7 @@ const CustomCard: React.FC<CardProps> = ({ id, imageSrc, title }) => {
           size="lg"
           color="gray"
           className="hover:text-blue-500 transition-colors duration-300 ease-in-out"
-          onClick={() => console.log(id)}
+          onClick={handleNavigate}
         />
       </CardHeader>
       <CardBody className="overflow-visible p-4 flex justify-center">

@@ -65,28 +65,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-
-      {/* {usersData ? (
-        <ul>
-          {usersData.map((user) => (
-            <li key={user.id}>
-              <div>
-                <p>{user.phone}</p>
-              </div>
-              <div>
-                <h3>Address:</h3>
-                <p>{user.address.city}</p>
-              </div>
-              <div>
-                <h3>Company:</h3>
-                <p>{user.company.name}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Loading...</p>
-      )} */}
     </main>
   );
 };

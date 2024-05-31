@@ -20,12 +20,7 @@ const CustomNavbar: React.FC<any> = () => {
   const menuItems = ["Profile", "Activity", "Settings", "Log Out"];
 
   return (
-    <Navbar
-      disableAnimation
-      isBordered
-      maxWidth={"full"}
-      className="bg-black container mx-auto"
-    >
+    <Navbar disableAnimation isBordered className="bg-black">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>

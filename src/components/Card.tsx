@@ -23,7 +23,15 @@ const CustomCard: React.FC<CardProps> = ({ id, imageSrc, title }) => {
   const router = useRouter();
 
   const handleNavigate = () => {
-    router.push(`/card/${id}`);
+    const data = {
+      id: id.toString(),
+      imageSrc,
+      title,
+    };
+
+    const queryParams = new URLSearchParams(data).toString();
+
+    router.push(`/card?${queryParams}`);
   };
 
   return (

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { AppProvider } from "@/shared/reducers/GlobalState";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Suspense } from "react";
+import { NavigationEvents } from "@/components/Navigations";
 
 export const metadata: Metadata = {
   title: "LT Next App",
@@ -20,7 +19,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`min-w-[320px] flex flex-col overscroll-none`}>
         <AppProvider>
-          <NextUIProvider>{children}</NextUIProvider>
+          <NextUIProvider>
+            {children}
+            <Suspense fallback={null}>
+              <NavigationEvents />
+            </Suspense>
+          </NextUIProvider>
         </AppProvider>
       </body>
     </html>

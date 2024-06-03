@@ -14,19 +14,17 @@ const CardDetail = () => {
   return (
     <div
       key={id}
-      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4"
+      className="min-h-screen flex flex-col items-center justify-center p-4"
     >
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-md w-full">
+      <div className="bg-white rounded-xl overflow-hidden max-w-md w-full p-4">
+        <h1 className="text-2xl text-gray-800 font-bold pb-4">Card {id}</h1>
         <Image
           alt="Card detail"
-          className="object-cover rounded-xl"
+          className="object-cover rounded-lg"
           src={imageSrc || ""}
           style={{ objectFit: "cover" }}
         />
-        <div className="p-4">
-          <h1 className="text-2xl text-gray-800 font-bold mb-2">{title}</h1>
-          <Input placeholder="Description" fullWidth />
-        </div>
+        <h1 className="text-2xl text-gray-800 font-bold pt-4">{title}</h1>
       </div>
     </div>
   );

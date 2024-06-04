@@ -1,15 +1,20 @@
 "use client";
 
-import { Image, Input } from "@nextui-org/react";
-import { useSearchParams } from "next/navigation";
+import { Image } from "@nextui-org/react";
 import React from "react";
 
-const CardDetail = () => {
-  const searchParams = useSearchParams();
+type cardDetail = {
+  searchParams: {
+    id: string;
+    imageSrc: string;
+    title: string;
+  };
+};
 
-  const id = searchParams.get("id");
-  const imageSrc = searchParams.get("imageSrc");
-  const title = searchParams.get("title");
+const CardDetail = ({ searchParams }: cardDetail) => {
+  const id = searchParams.id;
+  const imageSrc = searchParams.imageSrc;
+  const title = searchParams.title;
 
   return (
     <div

@@ -4,6 +4,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { AppProvider } from "@/shared/reducers/GlobalState";
 import { Suspense } from "react";
 import { NavigationEvents } from "@/components/Navigations";
+import CustomNavbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "LT Next App",
@@ -20,6 +21,8 @@ export default function RootLayout({
       <body className={`min-w-[320px] flex flex-col overscroll-none`}>
         <AppProvider>
           <NextUIProvider>
+            <CustomNavbar />
+
             {children}
             <Suspense fallback={null}>
               <NavigationEvents />

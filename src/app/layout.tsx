@@ -18,11 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`min-w-[320px] flex flex-col overscroll-none`}>
+      <body
+        className={`min-w-[320px] flex flex-col overscroll-none p-4 bg-red-500`}
+      >
         <AppProvider>
           <NextUIProvider>
             <CustomNavbar />
-
             {children}
             <Suspense fallback={null}>
               <NavigationEvents />

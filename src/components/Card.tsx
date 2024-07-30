@@ -40,9 +40,9 @@ const CustomCard: React.FC<CardProps> = ({ id, imageSrc, title }) => {
         <h2 className="font-bold text-large">Card {id}</h2>
         <FontAwesomeIcon
           icon={faPen}
-          size="xl"
+          size="lg"
           color="gray"
-          className="hover:text-blue-500 transition-colors duration-300 ease-in-out cursor-pointer"
+          className="hover:text-blue-500 transition-colors duration-300 ease-in-out"
           onClick={handleNavigate}
         />
       </CardHeader>

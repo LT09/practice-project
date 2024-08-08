@@ -6,12 +6,19 @@ import { jsonplaceholderUsersTypes } from "@/types/jsonplaceholderTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import ProfileImage from "./ProfileImage";
+import useStore from "@/shared/reducers/ZustandGlobal";
+import { useRouter } from "next/navigation";
 interface HeaderProps {
   title: string;
   usersData: jsonplaceholderUsersTypes[] | undefined;
 }
 
 const Header: FC<HeaderProps> = ({ title, usersData }) => {
+  const router = useRouter();
+  const handleNavigate = () => {
+    router.push(`/profile`);
+  };
+
   return (
     <div className="bg-blue-700 lg:p-8 p-4">
       <div className="container mx-auto">
@@ -34,6 +41,7 @@ const Header: FC<HeaderProps> = ({ title, usersData }) => {
                 color="default"
                 radius="sm"
                 startContent={<FontAwesomeIcon icon={faPen} />}
+                onClick={handleNavigate}
               >
                 Edit profile
               </Button>

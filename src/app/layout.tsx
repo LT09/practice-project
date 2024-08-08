@@ -17,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`min-w-[320px] flex flex-col overscroll-none p-4 bg-red-500`}
-      >
+      <body className={`min-w-[320px] flex flex-col overscroll-none`}>
         <AppProvider>
           <NextUIProvider>
             {children}

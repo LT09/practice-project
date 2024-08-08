@@ -1,6 +1,7 @@
 "use client";
 
 import { Image } from "@nextui-org/react";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 
 type cardDetail = {
